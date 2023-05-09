@@ -17,14 +17,14 @@
           <div class="card m-3" style="width: 30rem;">
             <div class="row no-gutters">
               <div class="col-4">
-                <img src="{{ book['img'].replace("\\","/") }}" class="img" alt="{{ book['title'] }}" width="150">
+                <img src="../{{ book['img'].replace("\\","/") }}" class="img" alt="{{ book['title'] }}" width="150">
               </div>
               <div class="col-8">
                 <div class="card-body">        
                   <h5 class="card-title">{{ book['title'] }}</h5>
                   <h6 class="card-title">{{ book['author'] }}</h6>
                   <p class="card-text">{{ book['description'] }}</p>
-                  <a href="{{ book['book_path'].replace("\\","/").replace(" ", "%20") }}">Читать</a>
+                  <a href="../{{ book['book_path'].replace("\\","/").replace(" ", "%20") }}">Читать</a>
                 </div>
               </div>        
             </div>

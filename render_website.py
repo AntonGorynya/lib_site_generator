@@ -1,7 +1,12 @@
 import json
+import os
+from more_itertools import chunked
 from jinja2 import Environment, FileSystemLoader
 from livereload import Server
 
+
+BOOKS_PER_PAGE = 10
+INDEX_FOLDER = 'pages'
 
 def load_template():
     env = Environment(loader=FileSystemLoader('templates'))
@@ -11,10 +16,14 @@ def load_template():
 
 def rebuild():
     with open('books.json', 'r', encoding="utf8") as file:
-        context = json.loads(file.read())
+        books = json.loads(file.read())
+    paged_books = list(chunked(books, BOOKS_PER_PAGE))
     index_template = load_template()
-    with open('index.html', mode='w', encoding='utf8') as result:
-        result.write(index_template.render(books=context))
+    for page_num, page in enumerate(paged_books):
+        path = os.path.join(INDEX_FOLDER, f'index{page_num}.html')
+        os.makedirs(INDEX_FOLDER, exist_ok=True)
+        with open(path, mode='w', encoding='utf8') as result:
+            result.write(index_template.render(books=page))
 
 
 if __name__ == '__main__':
