@@ -38,7 +38,7 @@ pip install -r requirements.txt
 
 ### Пример запуска
 ```commandline
-> python.exe .\main.py
+> python.exe .\render_website.py
 ```
 
 ### Цель проекта
