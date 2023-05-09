@@ -1,6 +1,6 @@
 import json
 from jinja2 import Environment, FileSystemLoader
-from livereload import Server, shell
+from livereload import Server
 
 
 def load_template():
@@ -20,10 +20,5 @@ def rebuild():
 if __name__ == '__main__':
     server = Server()
     rebuild()
-
     server.watch('templates/*.html', rebuild)
     server.serve(root='./')
-
-
-
-
