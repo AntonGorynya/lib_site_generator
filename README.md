@@ -42,7 +42,7 @@ pip install -r requirements.txt
 ```
 ### Пример
 Пример сайта можно найти по ссылке
-https://antongorynya.github.io/lib_site_generator.github.io/pages/index1.html
+https://antongorynya.github.io/lib_site_generator/pages/index1.html
 
 ### Цель проекта
 
