@@ -8,6 +8,7 @@ from livereload import Server
 BOOKS_PER_PAGE = 10
 INDEX_FOLDER = 'pages'
 
+
 def load_template():
     env = Environment(loader=FileSystemLoader('templates'))
     index_template = env.get_template('index template.html')
