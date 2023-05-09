@@ -11,7 +11,7 @@ Python3 должен быть уже установлен.
 pip install -r requirements.txt
 ```
 ### Подготовка к запуску
-убедитесь в наличие файла **book.json** вида
+убедитесь в наличие файла **book.json** в корне программы вида
 ```commandline
 [
     {
@@ -40,6 +40,9 @@ pip install -r requirements.txt
 ```commandline
 > python.exe .\render_website.py
 ```
+### Пример
+Пример сайта можно найти по ссылке
+https://antongorynya.github.io/lib_site_generator.github.io/pages/index1.html
 
 ### Цель проекта
 
