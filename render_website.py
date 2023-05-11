@@ -18,6 +18,8 @@ def load_template():
 def rebuild():
     with open('books.json', 'r', encoding="utf8") as file:
         books = json.loads(file.read())
+    for book in books:
+        book['img'] = os.path.join('media', os.path.split(book['img'])[-1])
     paged_books = list(chunked(books, BOOKS_PER_PAGE))
     last_page_num = len(paged_books)
     index_template = load_template()
