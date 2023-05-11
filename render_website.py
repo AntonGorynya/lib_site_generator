@@ -1,5 +1,6 @@
 import json
 import os
+import argparse
 from more_itertools import chunked
 from jinja2 import Environment, FileSystemLoader
 from livereload import Server
@@ -9,6 +10,14 @@ BOOKS_PER_PAGE = 10
 INDEX_FOLDER = 'pages'
 
 
+def create_parser():
+    parser = argparse.ArgumentParser(
+        description='generate lib '
+    )
+    parser.add_argument('--json_path', help='Path to json file', default='books.json')
+    return parser
+
+
 def load_template():
     env = Environment(loader=FileSystemLoader('templates'))
     index_template = env.get_template('index template.html')
@@ -16,14 +25,14 @@ def load_template():
 
 
 def rebuild():
-    with open('books.json', 'r', encoding="utf8") as file:
-        books = json.loads(file.read())
-    for book in books:
-        book['img'] = os.path.join('media', os.path.split(book['img'])[-1])
-    paged_books = list(chunked(books, BOOKS_PER_PAGE))
-    last_page_num = len(paged_books)
+    with open(JSON_PATH, 'r', encoding="utf8") as file:
+        books_meta = json.loads(file.read())
+    for book_meta in books_meta:
+        book_meta['img'] = os.path.join('media', os.path.split(book_meta['img'])[-1])
+    chunked_meta = list(chunked(books_meta, BOOKS_PER_PAGE))
+    last_page_num = len(chunked_meta)
     index_template = load_template()
-    for page_num, page in enumerate(paged_books, start=1):
+    for page_num, page in enumerate(chunked_meta, start=1):
         path = os.path.join(INDEX_FOLDER, f'index{page_num}.html')
         os.makedirs(INDEX_FOLDER, exist_ok=True)
         with open(path, mode='w', encoding='utf8') as result:
@@ -35,6 +44,10 @@ def rebuild():
 
 
 if __name__ == '__main__':
+    parser = create_parser()
+    args = parser.parse_args()
+    JSON_PATH = args.json_path
+
     server = Server()
     rebuild()
     server.watch('templates/*.html', rebuild)
