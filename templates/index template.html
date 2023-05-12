@@ -20,7 +20,7 @@
   <body>
     <div class="container">
       <nav aria-label="Page navigation example">
-        <ul class="pagination mt-3">
+        <ul class="pagination mt-3 w-100 justify-content-center">
           {% if page_num > 1%}
             <li class="page-item"><a class="page-link" href="index{{page_num - 1}}.html">Предыдушая</a></li>
           {% else %}
@@ -30,7 +30,7 @@
             {% if num == page_num %}
               <li class="page-item active">
                 <span class="page-link">
-                  {{num}} 
+                  {{num}}
                   <span class="sr-only">(current)</span>
                 </span>
               </li>
