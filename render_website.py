@@ -1,9 +1,10 @@
+import argparse
 import json
 import os
-import argparse
 from urllib.request import pathname2url
-from more_itertools import chunked
+
 from jinja2 import Environment, FileSystemLoader
+from more_itertools import chunked
 from livereload import Server
 
 
