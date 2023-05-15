@@ -43,7 +43,7 @@ def rebuild():
         os.makedirs(INDEX_FOLDER, exist_ok=True)
         with open(path, mode='w', encoding='utf8') as result:
             result.write(index_template.render(
-                books=page,
+                books_meta=page,
                 last_page_num=last_page_num,
                 page_num=page_num)
             )
