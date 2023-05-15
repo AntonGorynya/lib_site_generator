@@ -29,9 +29,9 @@ def rebuild():
     with open(JSON_PATH, 'r', encoding="utf8") as file:
         books_meta = json.loads(file.read())
     for book_meta in books_meta:
-        book_meta['img'] = os.path.join('..', 'media', os.path.split(book_meta['img'])[-1])
+        book_meta['img'] = os.path.join('..', 'media', 'images', os.path.split(book_meta['img'])[-1])
         book_meta['img'] = pathname2url(book_meta['img'])
-        book_meta['book_path'] = os.path.join('..', book_meta['book_path'])
+        book_meta['book_path'] = os.path.join('..', 'media', book_meta['book_path'])
         book_meta['book_path'] = pathname2url(book_meta['book_path'])
 
     chunked_meta = list(chunked(books_meta, BOOKS_PER_PAGE))
