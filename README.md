@@ -37,7 +37,7 @@ pip install -r requirements.txt
     },
 ]
 ```
-- переместите обложки книг в папку **media** 
+- переместите обложки книг в папку **media\images** 
 
 
 
