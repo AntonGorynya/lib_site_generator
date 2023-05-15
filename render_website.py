@@ -28,7 +28,7 @@ def load_template():
 
 def rebuild():
     with open(JSON_PATH, 'r', encoding='utf8') as file:
-        books_meta = json.loads(file.read())
+        books_meta = json.load(file)
     for book_meta in books_meta:
         book_meta['img'] = os.path.join('..', 'media', 'images', os.path.split(book_meta['img'])[-1])
         book_meta['img'] = pathname2url(book_meta['img'])
