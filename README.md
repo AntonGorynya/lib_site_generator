@@ -38,7 +38,7 @@ pip install -r requirements.txt
 ]
 ```
 - переместите обложки книг в папку **media\images** 
-
+- переместите скаченые книги в папку **media\books**
 
 
 ### Пример запуска
